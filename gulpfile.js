@@ -69,7 +69,7 @@ gulp.task('jade', function(done) {
 gulp.task('content', function(done) {
 	
 	gulp.src(['./src/content/**/*.md','!./src/content/README.md'])
-		.pipe(gulpMarkedJade("./src/jade/inc/txt-layout.jade"))
+		.pipe(gulpMarkedJade("./src/jade/index.jade"))
 		.pipe(gulp.dest('./dist/'))
 		.pipe(livereload())
 		.on('end',done);
@@ -134,13 +134,13 @@ gulp.task('livereload', function(){
 
 gulp.task('watch', function() {
 	gulp.watch(paths.sass, ['sass']);
-	gulp.watch(paths.jade, ['jade']);
+	//gulp.watch(paths.jade, ['jade']);
 	gulp.watch(paths.js, ['js']);
 	gulp.watch([paths.content,paths.contentLayout], ['content']);
 	gulp.watch(paths.assets, ['assets']);
 });
 
-gulp.task('build', ['sass','jade','js',/*'content',*/'bower-files','assets']);
+gulp.task('build', ['sass',/*'jade',*/'js','content','bower-files','assets']);
 
 gulp.task('serve', ['express','livereload','watch']);
 
